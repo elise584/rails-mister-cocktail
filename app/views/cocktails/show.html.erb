@@ -1,2 +1,33 @@
-<h1>Cocktails#show</h1>
-<p>Find me in app/views/cocktails/show.html.erb</p>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @cocktail.picture_url %>);">
+  <div class="banner-container">
+    <h1><strong><%= @cocktail.name %></strong></h1>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="description col-8">
+      <div class="cocktail-details">
+        <h5><strong>Description</strong></h5>
+        <% @cocktail.doses.each do |dose| %>
+          <ol>
+            <li><%= "#{dose.description} of #{dose.ingredient.name}" %></li>
+          </ol>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="ingredients-details col-4">
+      <div class="cocktail-details">
+        <h5><strong>Ingredients</strong></h5>
+        <% @cocktail.ingredients.each do |ingredient| %>
+          <ul>
+            <li><%= ingredient.name %></li>
+          </ul>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <%= link_to "Back", cocktails_path, class: "btn btn-primary" %>
+</div>
