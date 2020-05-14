@@ -9,25 +9,33 @@
     <div class="description col-8">
       <div class="cocktail-details">
         <h5><strong>Description</strong></h5>
-        <% @cocktail.doses.each do |dose| %>
           <ol>
-            <li><%= "#{dose.description} of #{dose.ingredient.name}" %></li>
+            <% @cocktail.doses.each do |dose| %>
+              <li><%= "#{dose.description} of #{dose.ingredient.name}" %>
+                <%= link_to "Remove",
+                  cocktail_dose_path(@cocktail),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" } %>
+              </li>
+            <% end %>
           </ol>
-        <% end %>
+      </div>
+      <div class="links-cocktail">
+        <%= link_to "New dose", new_cocktail_dose_path(@cocktail) %>
       </div>
     </div>
 
     <div class="ingredients-details col-4">
       <div class="cocktail-details">
         <h5><strong>Ingredients</strong></h5>
-        <% @cocktail.ingredients.each do |ingredient| %>
-          <ul>
+        <ul>
+          <% @cocktail.ingredients.each do |ingredient| %>
             <li><%= ingredient.name %></li>
-          </ul>
-        <% end %>
+          <% end %>
+        </ul>
       </div>
     </div>
   </div>
 
-  <%= link_to "Back", cocktails_path, class: "btn btn-primary" %>
+  <%= link_to "Back", root_path, class: "btn btn-primary" %>
 </div>
