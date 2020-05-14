@@ -1,1 +1,24 @@
 // Specific CSS for your home-page
+
+.card-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 16px;
+}
+
+.card {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 4px;
+  img {
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+  }
+  a {
+    position: sticky;
+    bottom: 20px;
+  }
+}
+

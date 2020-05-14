@@ -1,0 +1,31 @@
+<h1>All cocktails</h1>
+
+<div class="container">
+
+  <div class="card-container">
+      <% @cocktails.each do |cocktail| %>
+          <div class="card" style="width: 18rem;">
+            <% if cocktail.picture_url == nil %>
+              <%= image_tag "https://source.unsplash.com/featured/?drink,cocktail", class: "card-img-top" %>
+            <% else %>
+              <%= image_tag cocktail.picture_url, class: "card-img-top"%>
+            <% end %>
+            <div class="card-body">
+              <h5 class="card-title"><%= cocktail.name %></h5>
+              <% cocktail.doses.each do |dose| %>
+              <ol>
+                <li><%= "#{dose.description} of #{dose.ingredient.name}" %></li>
+              </ol>
+              <% end %>
+              <p class="card-text"></p>
+              <div class="details">
+                <i class="far fa-heart"></i>
+              </div>
+            </div>
+            <div class="card-body">
+              <%= link_to "Make this cocktail", cocktail_path(cocktail), class: "card-link" %>
+            </div>
+          </div>
+      <% end %>
+  </div>
+</div>
