@@ -1,6 +1,6 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @cocktail.picture_url %>);">
   <div class="banner-container">
-    <h1><strong><%= @cocktail.name %></strong></h1>
+    <h3><strong><%= @cocktail.name %></strong></h3>
   </div>
 </div>
 
@@ -13,14 +13,23 @@
             <% @cocktail.doses.each do |dose| %>
               <li><%= "#{dose.description} of #{dose.ingredient.name}" %>
                 <%= link_to "Remove",
-                  cocktail_dose_path(@cocktail),
+                  cocktail_dose_path(dose),
                   method: :delete,
                   data: { confirm: "Are you sure?" } %>
               </li>
             <% end %>
           </ol>
       </div>
-      <div class="links-cocktail">
+      <div class="add-dose">
+        <h5>🍹 <strong>Add a new dose</strong> 🍹</h5>
+        <%#= simple_form_for [ @cocktail, @dose ] do |f| %>
+          <%#= f.input :description %>
+          <%#= f.association :ingredient %>
+          <%#= f.submit class: 'btn btn-primary'%>
+          <%#= f.button :button, "Cancel", type: "reset", class: "btn btn-danger" %>
+        <%# end %>
+      </div>
+        <div class="links-cocktail">
         <%= link_to "New dose", new_cocktail_dose_path(@cocktail) %>
       </div>
     </div>

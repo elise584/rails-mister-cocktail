@@ -25,7 +25,7 @@ body {
   background-size: cover;
   background-position: center;
   padding: 150px 0;
-  h1 {
+  h1, h3 {
   margin: 0;
   color: white;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
@@ -35,3 +35,26 @@ body {
   }
 }
 
+.footer {
+  background: #F4F4F4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  padding: 0px 50px;
+  color: rgba(0,0,0,0.4);
+}
+
+.footer .fa-heart {
+  color: #D23333;
+}
+
+.site {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.site-content {
+  flex: 1;
+}
