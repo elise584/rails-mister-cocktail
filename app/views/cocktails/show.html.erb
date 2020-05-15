@@ -1,4 +1,10 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @cocktail.picture_url %>);">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),
+url(<% if @cocktail.picture_url == "" %>
+      <%= "https://source.unsplash.com/featured/?#{@cocktail.name.first}" %>
+    <% else %>
+      <%= @cocktail.picture_url %>
+    <% end %>);">
+
   <div class="banner-container">
     <h3><strong><%= @cocktail.name %></strong></h3>
   </div>

@@ -11,8 +11,8 @@
       <% @cocktails.each do |cocktail| %>
           <%= link_to cocktail_path(cocktail) do %>
           <div class="card" style="width: 18rem;">
-            <% if cocktail.picture_url == nil %>
-              <%= image_tag "https://source.unsplash.com/featured/?drink,cocktail", class: "card-img-top" %>
+            <% if cocktail.picture_url == "" %>
+              <%= image_tag "https://source.unsplash.com/featured/?#{cocktail.name.first}", class: "card-img-top" %>
             <% else %>
               <%= image_tag cocktail.picture_url, class: "card-img-top"%>
             <% end %>
