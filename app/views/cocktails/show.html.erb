@@ -9,7 +9,26 @@
     <div class="description col-8">
       <div class="cocktail-details">
         <h5><strong>Description</strong></h5>
-          <ol>
+        <p><%= @cocktail.description %></p>
+      </div>
+      <div class="links-cocktail">
+        <%= link_to "Modify", edit_cocktail_path, class: "btn btn-outline-secondary" %>
+      </div>
+      <div class="links-cocktail">
+        <h6>🍹 <strong>Add ingredient</strong> 🍹</h6>
+        <%= simple_form_for [@cocktail, @dose] do |f| %>
+          <%= f.input :description %>
+          <%= f.association :ingredient %>
+          <%= f.submit class: 'btn btn-outline-secondary'%>
+          <%= f.button :button, "Cancel", type: "reset", class: "btn btn-outline-danger" %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="ingredients-details col-4">
+      <div class="cocktail-details">
+        <h5><strong>Ingredients</strong></h5>
+          <ul>
             <% @cocktail.doses.each do |dose| %>
               <li><%= "#{dose.description} of #{dose.ingredient.name}" %>
                 <%= link_to "Remove",
@@ -18,24 +37,7 @@
                   data: { confirm: "Are you sure?" } %>
               </li>
             <% end %>
-          </ol>
-      </div>
-      <div class="add-dose">
-        <%#= render "doses/new", cocktail: @cocktail, dose: @dose %>
-      </div>
-        <div class="links-cocktail">
-        <%= link_to "New dose", new_cocktail_dose_path(@cocktail) %>
-      </div>
-    </div>
-
-    <div class="ingredients-details col-4">
-      <div class="cocktail-details">
-        <h5><strong>Ingredients</strong></h5>
-        <ul>
-          <% @cocktail.ingredients.each do |ingredient| %>
-            <li><%= ingredient.name %></li>
-          <% end %>
-        </ul>
+          </ul>
       </div>
     </div>
   </div>
