@@ -9,6 +9,7 @@
 
   <div class="card-container">
       <% @cocktails.each do |cocktail| %>
+          <%= link_to cocktail_path(cocktail) do %>
           <div class="card" style="width: 18rem;">
             <% if cocktail.picture_url == nil %>
               <%= image_tag "https://source.unsplash.com/featured/?drink,cocktail", class: "card-img-top" %>
@@ -21,10 +22,8 @@
                 <i class="far fa-heart"></i>
               </div>
             </div>
-            <div class="card-body">
-              <%= link_to "Make this cocktail", cocktail_path(cocktail), class: "card-link" %>
-            </div>
           </div>
+          <% end %>
       <% end %>
   </div>
 </div>
